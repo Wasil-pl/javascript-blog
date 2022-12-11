@@ -20,7 +20,7 @@ const titleClickHandler = function(event){
 
     const linkAttribute = clickedElement.getAttribute('href');
 
-    const targetArticle = document.querySelector(linkAttribute);
+    const targetArticle = document.querySelector(linkAttribute); 
 
     targetArticle.classList.add('active');
 }
@@ -38,10 +38,8 @@ function generateTitleLinks (){
     for(let article of articles){
 
         const articleId = article.getAttribute('id');
-        console.log(articleId);
 
         const articleTitle = article.querySelector('.post-title').innerHTML;
-        console.log(articleTitle);
 
         const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
 
@@ -49,8 +47,7 @@ function generateTitleLinks (){
         titlesWrapper.insertAdjacentHTML('beforeend', linkHTML);
     }
     const links = document.querySelectorAll('.titles a');
-    console.log(links);
-    
+
     for(let link of links){
         link.addEventListener('click', titleClickHandler);
     }
