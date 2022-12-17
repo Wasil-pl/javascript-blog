@@ -119,3 +119,27 @@ const addClickListenersToTags = function(){
 };
 
 addClickListenersToTags();
+
+const generateAuthors = function(){
+
+  document.querySelector('.authors').innerHTML = '';
+
+  const articles = document.querySelectorAll('.post');
+
+  for(let article of articles){
+
+    const authorNameBy = article.querySelector('.post-author').innerHTML;
+    console.log(authorNameBy);
+    const authorName = authorNameBy.replace('by ', '');
+    console.log(authorName);
+    const href = article.querySelector('.post-author');
+    href.setAttribute('id', authorName);
+    const linkHTML = '<li><a href="#' + authorName + '">' + authorName + '</a></li>';
+    console.log(linkHTML);
+    const authorArticle = document.querySelector('.authors');
+
+    authorArticle.insertAdjacentHTML('beforeend', linkHTML);
+  }
+};
+
+generateAuthors();
