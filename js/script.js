@@ -86,7 +86,6 @@ const tagClickHandler = function(event){
   event.preventDefault();
 
   const clickedElement = this;
-
   const href = clickedElement.getAttribute('href');
 
   const tag = href.replace('#tag-', '');
