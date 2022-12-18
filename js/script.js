@@ -35,7 +35,7 @@ const generateTitleLinks = function(customSelector = ''){
 
 generateTitleLinks();
 
-const params = (0, 999999);
+const params = (Math.max(0), Math.min(999999));
 
 const calculateTagsParams = function(tags)
 {
@@ -115,8 +115,7 @@ const generateAuthors = function(){
   for(let article of articles){
     const authorNameBy = article.querySelector('.post-author').innerHTML;
     const authorName = authorNameBy.replace('by ', '');
-    const href = article.querySelector('.post-author');
-    href.setAttribute('data-author', authorName);
+    article.setAttribute('data-author', authorName);
     article.querySelector('.post-author').innerHTML = '';
     const linkHTML = '<a href="#author-' + authorName + '">' + authorName + '</a>';
     const authorArticle = article.querySelector('.post-author');
