@@ -54,10 +54,8 @@ const calculateTagsParams = function(tags)
 const generateTags = function(){
   let allTags = {};
   const articles = document.querySelectorAll('.post');
-  //const tagsWrapper = document.querySelector('.titles');
   for(let article of articles){
     article.querySelector('.post-tags .list-horizontal').innerHTML = '';
-    //const tags = article.querySelector('.post-tags .list');
     const articleTags = article.getAttribute('data-tags');
     const articleTagsArray = articleTags.split(' ');
     for(let tag of articleTagsArray){
