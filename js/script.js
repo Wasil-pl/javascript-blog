@@ -1,5 +1,8 @@
 'use strict';
 
+const optCloudClassCount = 5;
+const optCloudClassPrefix = 'tag-size- ';
+
 const titleClickHandler = function(event){
   event.preventDefault();
   const clickedElement = this;
@@ -35,7 +38,7 @@ const generateTitleLinks = function(customSelector = ''){
 
 generateTitleLinks();
 
-const params = (Math.max(0), Math.min(999999));
+const params = {'max':0, 'min':999999};
 
 const calculateTagsParams = function(tags)
 {
@@ -49,6 +52,14 @@ const calculateTagsParams = function(tags)
     }
   }
   return params;
+};
+
+const calculateTagClass = function(count, params){
+  const normalizedCount = count - params.min;
+  const normalizedMax = params.max - params.min;
+  const percentage = normalizedCount / normalizedMax;
+  const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1);
+  return optCloudClassPrefix + classNumber;
 };
 
 const generateTags = function(){
@@ -75,9 +86,10 @@ const generateTags = function(){
   console.log('tagsParams:', tagsParams);
   let allTagsHTML = '';
   for(let tag in allTags){
-    allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+    allTagsHTML += '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) +'" href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ')' + '</a></li>';
   }
   tagList.innerHTML = allTagsHTML;
+  console.log(tagList);
 };
 
 generateTags();
