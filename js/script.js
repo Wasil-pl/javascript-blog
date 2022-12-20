@@ -62,7 +62,7 @@ const calculateTagClass = function(count, params){
 };
 
 const generateTags = function(){
-  let allTags = {};
+  const allTags = {};
   const articles = document.querySelectorAll('.post');
   for(let article of articles){
     article.querySelector('.post-tags .list-horizontal').innerHTML = '';
@@ -108,8 +108,8 @@ const tagClickHandler = function(event){
 };
 
 const addClickListenersToTags = function(){
-  const linkstags = document.querySelectorAll('.post-tags .list-horizontal a, .tags a');
-  for(let linkTag of linkstags){
+  const linksTags = document.querySelectorAll('.post-tags .list-horizontal a, .tags a');
+  for(let linkTag of linksTags){
     linkTag.addEventListener('click', tagClickHandler);
   }
 };
@@ -117,7 +117,7 @@ const addClickListenersToTags = function(){
 addClickListenersToTags();
 
 const generateAuthors = function(){
-  let allAuthors = [];
+  const allAuthors = [];
   document.querySelector('.authors').innerHTML = '';
   const articles = document.querySelectorAll('.post');
   for(let article of articles){
