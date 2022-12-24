@@ -96,7 +96,6 @@ const generateTags = function(){
     allTagsData.tags.push({ tag: tag, count: allTags[tag], className: calculateTagClass(allTags[tag], tagsParams) });
   }
   tagList.innerHTML = templates.tagCloudLink(allTagsData);
-  console.log(allTagsData);
 };
 
 generateTags();
